@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Draggable from 'react-draggable';
+
 
 const TextBox = ({ id, x, y, onDelete }) => {
   const [frame, setFrame] = useState({
@@ -12,7 +14,7 @@ const TextBox = ({ id, x, y, onDelete }) => {
   useEffect(() => {
     textAreaRef.current.focus();
     setIsSelected(true); // Automatically select when first created
-    adjustHeight(); // Adjust height on creation
+    adjustHeight(); 
   }, []);
 
   const handleClick = (e) => {
@@ -41,6 +43,7 @@ const TextBox = ({ id, x, y, onDelete }) => {
   };
 
   return (
+    <Draggable>
     <div
       onClick={handleClick}
       style={{
@@ -48,13 +51,14 @@ const TextBox = ({ id, x, y, onDelete }) => {
         top: frame.translate[1],
         left: frame.translate[0],
         padding: '10px',
-        border: isSelected ? '1px solid #6200EA' : 'none', // Show border only when selected
+        //border: isSelected ? '1px solid #FFFFFF' : 'none', // Show border only when selected
+        border:  '1px solid #808080', 
         borderRadius: '10px',
         backgroundColor: 'transparent',
         boxShadow: isSelected ? '0 2px 8px rgba(0, 0, 0, 0.2)' : 'none', // Show shadow only when selected
         cursor: 'move',
         width: '200px',
-        minHeight: '50px',
+        minHeight: '40px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -69,11 +73,11 @@ const TextBox = ({ id, x, y, onDelete }) => {
           border: 'none',
           outline: 'none',
           width: '100%',
-          resize: 'none', // Prevent manual resizing
+          resize: 'none', 
           background: 'transparent',
           fontSize: '16px',
           textAlign: 'center',
-          overflow: 'hidden', // Hide scrollbars
+          overflow: 'hidden', 
         }}
       />
       {isSelected && (
@@ -82,12 +86,12 @@ const TextBox = ({ id, x, y, onDelete }) => {
           onClick={(e) => e.stopPropagation()} // Prevent click event from bubbling up
           style={{
             position: 'absolute',
-            top: '-15px',
-            right: '-15px',
+            top: '-6px',
+            right: '-6px',
             background: '#ff0000',
             borderRadius: '50%',
-            width: '30px',
-            height: '30px',
+            width: '15px',
+            height: '15px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -100,6 +104,7 @@ const TextBox = ({ id, x, y, onDelete }) => {
         </div>
       )}
     </div>
+    </Draggable>
   );
 };
 
@@ -129,3 +134,5 @@ const App = () => {
 };
 
 export default App;
+
+
