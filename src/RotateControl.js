@@ -3,6 +3,8 @@ import React, { useRef } from 'react';
 const RotateControl = ({ onRotate }) => {
   const handleMouseDown = (e) => {
     e.preventDefault();
+    e.stopPropagation(); 
+    
     const startX = e.clientX;
     const startY = e.clientY;
 
@@ -31,7 +33,7 @@ const RotateControl = ({ onRotate }) => {
         top: '-20px',
         left: '50%',
         transform: 'translateX(-50%)',
-        background: '#6200EA',
+        background: '#808080',
         borderRadius: '50%',
         width: '15px',
         height: '15px',

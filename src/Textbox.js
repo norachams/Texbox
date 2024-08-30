@@ -71,14 +71,18 @@ const TextBox = ({ id, x, y, onDelete }) => {
         backgroundColor: 'transparent',
         boxShadow: isSelected ? '0 2px 8px rgba(0, 0, 0, 0.2)' : 'none',
         cursor: isSelected ? 'move' : 'default',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        transform: `rotate(${rotation}deg)`,  // Rotation applied here
-        transformOrigin: 'center center',
         zIndex: isSelected ? 10 : 1,
       }}
       onClick={handleClick}
+    >
+      <div
+      style={{
+        transform: `rotate(${rotation}deg)`,
+        transformOrigin: 'center center',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
     >
       <textarea
         ref={textAreaRef}
@@ -98,6 +102,7 @@ const TextBox = ({ id, x, y, onDelete }) => {
           whiteSpace: 'nowrap',
         }}
       />
+      </div>
       {isSelected && (
         <>
           <div
