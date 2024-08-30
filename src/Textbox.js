@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Rnd } from 'react-rnd';
-import RotateControl from './RotateControl'; // Import the RotateControl component
+import RotateControl from './RotateControl'; 
 
-const TextBox = ({ id, x, y, onDelete,color, onClick }) => {
+const TextBox = ({ id, x, y, onDelete,color, font,onClick }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [fontSize, setFontSize] = useState(16);
-  const [rotation, setRotation] = useState(0); // Rotation state
+  const [rotation, setRotation] = useState(0);
   const textAreaRef = useRef(null);
 
   useEffect(() => {
@@ -102,6 +102,7 @@ const TextBox = ({ id, x, y, onDelete,color, onClick }) => {
           padding: '0',
           whiteSpace: 'nowrap',
           color: color,
+          fontFamily: font, 
         }}
       />
       </div>

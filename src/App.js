@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import TextBox from './Textbox'; // Ensure to import the TextBox component
-import Navbar from './navbar'; // Import the Navbar component
+import TextBox from './Textbox'; 
+import Navbar from './navbar'; 
 
 const App = () => {
   const [textBoxes, setTextBoxes] = useState([]);
   const [selectedTextBoxId, setSelectedTextBoxId] = useState(null); // Track selected text box ID
-  const [textColor, setTextColor] = useState('#000000'); // Default text color
+  const [textColor, setTextColor] = useState('#000000');
+  const [textFont, setTextFont] = useState('Arial, sans-serif');
 
   const handleClick = (e) => {
     const newTextBox = {
       id: Date.now(),
       x: e.clientX,
       y: e.clientY,
-      color: textColor, // Set initial color
+      color: textColor, 
+      font: textFont,
     };
     setTextBoxes([...textBoxes, newTextBox]);
   };
@@ -31,9 +33,16 @@ const App = () => {
     ));
   };
 
+  const handleFontChange = (font) => {
+    setTextFont(font);
+    setTextBoxes(textBoxes.map(box =>
+      box.id === selectedTextBoxId ? { ...box, font: font } : box
+    ));
+  };
+
   return (
     <div>
-      <Navbar onColorChange={handleColorChange} />
+      <Navbar onColorChange={handleColorChange} onFontChange={handleFontChange} />
       <div onClick={handleClick} style={{ height: '100vh', width: '100vw', position: 'relative' }}>
         {textBoxes.map((box) => (
           <TextBox
@@ -42,6 +51,7 @@ const App = () => {
             x={box.x}
             y={box.y}
             color={box.color}
+            font={box.font}
             onDelete={deleteTextBox}
             onClick={() => setSelectedTextBoxId(box.id)} // Set selected text box on click
           />
