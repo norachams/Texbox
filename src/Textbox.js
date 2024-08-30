@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Rnd } from 'react-rnd';
 import RotateControl from './RotateControl'; // Import the RotateControl component
 
-const TextBox = ({ id, x, y, onDelete }) => {
+const TextBox = ({ id, x, y, onDelete,color, onClick }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [fontSize, setFontSize] = useState(16);
   const [rotation, setRotation] = useState(0); // Rotation state
@@ -17,6 +17,7 @@ const TextBox = ({ id, x, y, onDelete }) => {
   const handleClick = (e) => {
     e.stopPropagation();
     setIsSelected(true);
+    if (onClick) onClick(); 
   };
 
   const handleBlur = () => {
@@ -100,6 +101,7 @@ const TextBox = ({ id, x, y, onDelete }) => {
           overflow: 'hidden',
           padding: '0',
           whiteSpace: 'nowrap',
+          color: color,
         }}
       />
       </div>
