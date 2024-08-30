@@ -1,20 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Draggable from 'react-draggable';
-
+import { Rnd } from 'react-rnd';
 
 const TextBox = ({ id, x, y, onDelete }) => {
-  const [frame, setFrame] = useState({
-    translate: [x, y],
-    rotate: 0,
-  });
   const [isSelected, setIsSelected] = useState(false);
+  const [fontSize, setFontSize] = useState(16);
   const textAreaRef = useRef(null);
 
   // Automatically focus the textarea when the TextBox is created
   useEffect(() => {
     textAreaRef.current.focus();
     setIsSelected(true); // Automatically select when first created
-    adjustHeight(); 
+    //adjustHeight(); 
+    adjustSize(); 
+    
   }, []);
 
   const handleClick = (e) => {
@@ -36,46 +34,64 @@ const TextBox = ({ id, x, y, onDelete }) => {
     onDelete(id);
   };
 
-  const adjustHeight = () => {
+  const adjustSize = () => {
     const textarea = textAreaRef.current;
-    textarea.style.height = 'auto'; // Reset the height
-    textarea.style.height = `${textarea.scrollHeight}px`; // Set it to the scroll height
+    textarea.style.height = 'auto'; 
+    textarea.style.width = 'auto';  
+
+    const scrollHeight = textarea.scrollHeight; 
+    const scrollWidth = textarea.scrollWidth;  
+
+    textarea.style.height = `${scrollHeight}px`; 
+    textarea.style.width = `${scrollWidth}px`; 
   };
 
+  const handleResize = (e, direction, ref, delta, position) => {
+    const newFontSize = Math.min(parseInt(ref.style.width) / 12, 100); // Adjust scaling and set a max font size
+    setFontSize(newFontSize);
+    textAreaRef.current.style.fontSize = `${newFontSize}px`;
+    adjustSize(); // Adjust the size of the text box along with the font size
+  };
+
+
   return (
-    <Draggable>
-    <div
-      onClick={handleClick}
+    <Rnd
+      default={{
+        x: x,
+        y: y,
+        width: 'auto',
+        height: 'auto',
+      }}
+      bounds="parent"
+      enableResizing={{
+        bottomRight: true, // Enable resizing from the bottom-right corner
+      }}
+      onResize={handleResize}
       style={{
-        position: 'absolute',
-        top: frame.translate[1],
-        left: frame.translate[0],
-        padding: '10px',
-        //border: isSelected ? '1px solid #FFFFFF' : 'none', // Show border only when selected
-        border:  '1px solid #808080', 
-        borderRadius: '10px',
+        border: isSelected ? '1px solid #808080' : 'none',
+        //border: isSelected ? '1px solid #ffffff' : 'none',
+        marginTop: '10px',
         backgroundColor: 'transparent',
-        boxShadow: isSelected ? '0 2px 8px rgba(0, 0, 0, 0.2)' : 'none', // Show shadow only when selected
-        cursor: 'move',
-        width: '200px',
-        minHeight: '40px',
+        boxShadow: isSelected ? '0 2px 8px rgba(0, 0, 0, 0.2)' : 'none',
+        cursor: isSelected ? 'move' : 'default',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}
+      onClick={handleClick}
     >
       <textarea
         ref={textAreaRef}
         onFocus={handleClick} // Set selected when focused
         onBlur={handleBlur} // Auto-delete or deselect on blur
-        onInput={adjustHeight} // Adjust height on input
+        onInput={adjustSize} // Adjust size on input
         style={{
           border: 'none',
           outline: 'none',
           width: '100%',
           resize: 'none', 
           background: 'transparent',
-          fontSize: '16px',
+          fontSize: `${fontSize}px`,
           textAlign: 'center',
           overflow: 'hidden', 
         }}
@@ -103,8 +119,7 @@ const TextBox = ({ id, x, y, onDelete }) => {
           ✕
         </div>
       )}
-    </div>
-    </Draggable>
+    </Rnd>
   );
 };
 
