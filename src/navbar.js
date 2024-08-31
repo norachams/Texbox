@@ -19,7 +19,7 @@ const fonts = [
 
 const Navbar = ({ onColorChange,onFontChange }) => {
   const [selectedColor, setSelectedColor] = useState(colors[0].value);
-  const [selectedFont, setSelectedFont] = useState(fonts[0].value);
+  const [, setSelectedFont] = useState(fonts[0].value);
 
 
   const handleColorChange = (event) => {
