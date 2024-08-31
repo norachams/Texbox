@@ -1,4 +1,4 @@
-# Texbox Canvas Simulatiom
+# Textbox Canvas Simulatiom
 
 **Demo Video of application:** [DEMO](https://youtu.be/qh9aorT8YUI)
   
