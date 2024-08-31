@@ -1,4 +1,6 @@
 import React, { useRef } from 'react';
+import { FaArrowsRotate } from "react-icons/fa6";
+
 
 const RotateControl = ({ onRotate }) => {
   const handleMouseDown = (e) => {
@@ -30,16 +32,22 @@ const RotateControl = ({ onRotate }) => {
       onMouseDown={handleMouseDown}
       style={{
         position: 'absolute',
-        top: '-20px',
-        left: '50%',
+        top: '7px',
+        left: '-10%',
         transform: 'translateX(-50%)',
         background: '#808080',
         borderRadius: '50%',
-        width: '15px',
-        height: '15px',
+        width: '20px', 
+        height: '20px',
         cursor: 'pointer',
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        color: 'white', 
       }}
-    />
+      >
+      <FaArrowsRotate size={12} />
+      </div>
   );
 };
 

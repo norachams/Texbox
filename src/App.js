@@ -9,10 +9,12 @@ const App = () => {
   const [textFont, setTextFont] = useState('Arial, sans-serif');
 
   const handleClick = (e) => {
+    const textBoxWidth = 200;  // Approximate initial width of your text box
+    const textBoxHeight = 50; 
     const newTextBox = {
       id: Date.now(),
-      x: e.clientX,
-      y: e.clientY,
+      x: e.clientX - textBoxWidth / 2,
+      y: e.clientY - textBoxHeight / 2,
       color: textColor, 
       font: textFont,
     };

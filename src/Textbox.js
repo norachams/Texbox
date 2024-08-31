@@ -100,7 +100,7 @@ const TextBox = ({ id, x, y, onDelete,color, font,onClick }) => {
           textAlign: 'center',
           overflow: 'hidden',
           padding: '0',
-          whiteSpace: 'nowrap',
+          //whiteSpace: 'nowrap',
           color: color,
           fontFamily: font, 
         }}
