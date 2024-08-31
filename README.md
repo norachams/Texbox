@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Texbox Canvas Simulatiom
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Demo Video of application:** [DEMO](https://youtu.be/qh9aorT8YUI)
+  
+## Installation
 
-## Available Scripts
+### Prerequisites
 
-In the project directory, you can run:
+Before you begin, make sure you have the following installed on your machine:
 
-### `npm start`
+- **Node.js**: You can download and install it from the [Node.js official website](https://nodejs.org/). Node.js is necessary to run JavaScript code on your server and includes npm, which you'll need to manage packages.
+  
+- **npm** (Node Package Manager): This is included with Node.js. npm is used to install and manage dependencies for your project.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Steps to Install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Clone the Repository**
 
-### `npm test`
+   Open your terminal (Command Prompt, Git Bash, or another terminal of your choice), and run the following command to clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone [https://github.com/norachams/Texbox.git]
+   
+2. **Navigate to the Project Directory**
+   ```bash
+   cd textbox
 
-### `npm run build`
+3. **Install Dependencies**
+   ```bash
+   npm install
+This will install all necessary packages, including:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`react`
+`react-dom`
+`react-rnd`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Run the Application**
+   ```bash
+   npm start
+   
+The application will automatically open in your default web browser at http://localhost:3000.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How the Application Works
 
-### `npm run eject`
+This application allows users to create, move, resize, rotate, and customize text boxes on a web page. The user can also change the color and font of the text within the text boxes using the options provided in the navbar.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Create Text Boxes:** Click anywhere on the screen to create a new text box at that location.
+- **Select a Text Box**: Click on any text box to select it. The selected text box will show a border.
+- **Move Text Boxes:** Click and drag a text box to reposition it anywhere on the screen.
+- **Resize Text:** Use the resize handle at the bottom-right corner of the text box to change its size.
+- **Rotate Text:** Use the rotation handle to rotate the text.
+- **Change Text Color:** Use the color dropdown in the navbar to change the text color of the selected text box.
+- **Change Font:** Use the font dropdown in the navbar to change the font of the text in the selected text box.
+- **Delete Text Boxes:** Click the "✕" button on a text box to delete it.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Some Resources Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The following resources and libraries were used in the development of this application:
 
-## Learn More
+- [React RND](https://www.npmjs.com/package/react-rnd/v/5.0.6): Used for creating resizable and draggable elements in the application.
+- [React Draggable](https://www.npmjs.com/package/react-draggable): Utilized for enabling drag-and-drop functionality within the application.
+- [React Moveable](https://www.npmjs.com/package/react-movable): Another library used for handling moveable and resizable UI elements.
+- [React Flow Examples: Resize & Rotate Nodes](https://reactflow.dev/examples/nodes/resize-rotate): Provided inspiration and examples for implementing resize and rotate functionality in nodes.
+- [DevExpress React TextBox Documentation](https://js.devexpress.com/React/Documentation/Guide/UI_Components/TextBox/Getting_Started_with_TextBox/): A guide on how to get started with TextBox in React, used for text input handling.
+- [Syncfusion React TextBox Documentation](https://ej2.syncfusion.com/react/documentation/textbox/getting-started): Another resource for implementing and understanding TextBox components in React.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
