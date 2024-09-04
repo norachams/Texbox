@@ -17,7 +17,7 @@ const fonts = [
     { name: 'Verdana', value: 'Verdana, sans-serif' },
   ];
 
-const Navbar = ({ onColorChange,onFontChange }) => {
+const Navbar = ({ onColorChange,onFontChange, onClearAll }) => {
   const [selectedColor, setSelectedColor] = useState(colors[0].value);
   const [, setSelectedFont] = useState(fonts[0].value);
 
@@ -34,9 +34,14 @@ const Navbar = ({ onColorChange,onFontChange }) => {
     onFontChange(fontValue);
   };
 
+  const handleClearAll = () => {
+    onClearAll(); 
+  };
+
   return (
-    <div style={{ padding: '10px', backgroundColor: '#333', color: '#fff', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-    <div style={{ marginRight: '20px', display: 'flex', alignItems: 'center' }}>
+    <div style={{ padding: '10px', backgroundColor: '#333', color: '#fff', display: 'flex', alignItems: 'center' }}>
+    <div style={{marginLeft:'430px',display: 'flex'}}>
+    <div style={{ marginRight: '20px', display: 'flex', alignItems: 'center'}}>
       <label style={{ marginRight: '10px' }}>Color:</label>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <span
@@ -59,7 +64,7 @@ const Navbar = ({ onColorChange,onFontChange }) => {
       </div>
     </div>
 
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ display: 'flex', alignItems: 'center'}}>
         <label style={{ marginRight: '10px' }}>Font:</label>
         <select onChange={handleFontChange} style={{ padding: '5px', width: '200px' }}>
         {fonts.map((font) => (
@@ -69,6 +74,13 @@ const Navbar = ({ onColorChange,onFontChange }) => {
         ))}
         </select>
         </div>
+        </div>
+        <button 
+        onClick={handleClearAll}
+        style={{ marginLeft:'auto',padding: '5px 5px',backgroundColor: '#FF0000', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+      >
+        Clear All
+      </button>
     </div>
   );
 };

@@ -42,9 +42,13 @@ const App = () => {
     ));
   };
 
+  const handleClearAll = () => {
+    setTextBoxes([]); 
+  };
+
   return (
     <div>
-      <Navbar onColorChange={handleColorChange} onFontChange={handleFontChange} />
+      <Navbar onColorChange={handleColorChange} onFontChange={handleFontChange} onClearAll={handleClearAll}/>
       <div onClick={handleClick} style={{ height: '100vh', width: '100vw', position: 'relative' }}>
         {textBoxes.map((box) => (
           <TextBox
