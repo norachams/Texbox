@@ -1,5 +1,6 @@
 # Textbox Canvas Simulatiom
 
+**Deployed Site to test it out:** [Site](https://textboxstim.netlify.app/)
 **Demo Video of application:** [DEMO](https://youtu.be/qh9aorT8YUI)
   
 ## Installation
